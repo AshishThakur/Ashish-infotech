@@ -253,3 +253,182 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(el);
   });
 });
+
+// 
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+
+let particlesArray = [];
+let mouse = {
+    x: null,
+    y: null,
+    radius: 150 // Cursor ka area jahan se particles door bhagenge aur connect honge
+};
+
+// Canvas Resize function
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Track Mouse Movement across window
+window.addEventListener('mousemove', function(event) {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+});
+
+window.addEventListener('mouseout', function() {
+    mouse.x = undefined;
+    mouse.y = undefined;
+});
+
+// Particle Class Setup
+class Particle {
+    constructor(x, y, size, color, baseSpeedX, baseSpeedY) {
+        this.x = x;
+        this.y = y;
+        this.baseX = x;
+        this.baseY = y;
+        this.size = size;
+        this.color = color;
+        this.baseSpeedX = baseSpeedX;
+        this.baseSpeedY = baseSpeedY;
+        this.density = (Math.random() * 25) + 5;
+    }
+
+    draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    update() {
+        // Floating movement
+        this.baseX += this.baseSpeedX;
+        this.baseY += this.baseSpeedY;
+
+        // Screen boundaries check
+        if (this.baseX < 0 || this.baseX > canvas.width) this.baseSpeedX *= -1;
+        if (this.baseY < 0 || this.baseY > canvas.height) this.baseSpeedY *= -1;
+
+        // Mouse Repulsion Logic (Cursor se dur hatna)
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (mouse.x !== undefined && distance < mouse.radius) {
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let maxDistance = mouse.radius;
+            let force = (maxDistance - distance) / maxDistance;
+            let directionX = forceDirectionX * force * this.density;
+            let directionY = forceDirectionY * force * this.density;
+
+            this.x -= directionX;
+            this.y -= directionY;
+        } else {
+            // Wapas apni original jagah par ana
+            if (this.x !== this.baseX) {
+                let dx = this.x - this.baseX;
+                this.x -= dx / 12;
+            }
+            if (this.y !== this.baseY) {
+                let dy = this.y - this.baseY;
+                this.y -= dy / 12;
+            }
+        }
+    }
+}
+
+// Initialize Particles Grid
+function initParticles() {
+    particlesArray = [];
+    let numberOfParticles = (canvas.width * canvas.height) / 8000;
+    
+    for (let i = 0; i < numberOfParticles; i++) {
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let size = (Math.random() * 2) + 1.2;
+        let color = '#06b6d4'; // Cyber cyan color
+        let speedX = (Math.random() - 0.5) * 0.6;
+        let speedY = (Math.random() - 0.5) * 0.6;
+        particlesArray.push(new Particle(x, y, size, color, speedX, speedY));
+    }
+}
+initParticles();
+
+// Connect particles with thin network lines + Direct Mouse Tech Lines
+function connectParticles() {
+    let opacityValue = 1;
+    for (let a = 0; a < particlesArray.length; a++) {
+        // Particle to Particle Web Lines
+        for (let b = a; b < particlesArray.length; b++) {
+            let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                           ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+            
+            if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+                opacityValue = 1 - (distance / 14000);
+                ctx.strokeStyle = `rgba(6, 182, 212, ${opacityValue * 0.18})`;
+                ctx.lineWidth = 0.8;
+                ctx.beginPath();
+                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                ctx.stroke();
+            }
+        }
+
+        // Tech Feature: Direct Mouse-to-Particle Laser/Data Connection Lines
+        if (mouse.x !== undefined) {
+            let mouseDist = ((particlesArray[a].x - mouse.x) * (particlesArray[a].x - mouse.x)) +
+                            ((particlesArray[a].y - mouse.y) * (particlesArray[a].y - mouse.y));
+            
+            if (mouseDist < 18000) { // Radius for mouse connection
+                let mouseOpacity = 1 - (mouseDist / 18000);
+                ctx.strokeStyle = `rgba(59, 130, 246, ${mouseOpacity * 0.4})`; // Glowing blue tech line
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+            }
+        }
+    }
+}
+
+// Draw a subtle glowing tech radar circle around mouse pointer
+function drawMouseRadar() {
+    if (mouse.x !== undefined) {
+        ctx.strokeStyle = 'rgba(6, 182, 212, 0.15)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 60, 0, Math.PI * 2);
+        ctx.stroke();
+    }
+}
+
+// Animation Loop
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+    }
+    connectParticles();
+    drawMouseRadar();
+
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// section3 cyber solutions 
+function toggleFaq(card) {
+  // Optional: Agar chahte ho ki ek baar me ek hi open rahe toh niche wali line uncomment kar dena
+  // document.querySelectorAll('.cyber-faq-card').forEach(item => { if(item !== card) item.classList.remove('active'); });
+
+  card.classList.toggle('active');
+}
