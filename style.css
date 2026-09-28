@@ -2239,7 +2239,7 @@ about us section css start here
     background-attachment: fixed; /* Background ko fixed / parallax karne ke liye yeh line add ki hai */
     display: flex;
     align-items: center;
-    padding: 200px 0 120px 0;
+    padding: 230px 0 120px 0;
     overflow: hidden;
 }
 
