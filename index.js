@@ -432,3 +432,60 @@ function toggleFaq(card) {
 
   card.classList.toggle('active');
 }
+
+// about us section
+document.addEventListener("DOMContentLoaded", function () {
+    const section = document.querySelector('.expertise-section');
+    if (!section) return;
+
+    const header = section.querySelector('.expertise-header');
+    const cards = section.querySelectorAll('.expertise-card');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.10
+    };
+
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (header) header.classList.add('active');
+                cards.forEach(card => {
+                    card.classList.add('active');
+                });
+                observerInstance.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(section);
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const fadeElements = document.querySelectorAll('.fade-content-wrapper');
+    
+    // Pehle elements ko animation ke liye ready state mein daalo
+    fadeElements.forEach(el => el.classList.add('animate-ready'));
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    fadeElements.forEach(el => observer.observe(el));
+});
+
+
+// our team slider 
