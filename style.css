@@ -4562,3 +4562,899 @@ html, body {
     gap: 30px;
   }
 }
+
+/* =========================================solutions  page section strt here============================= */
+.solution-hero-section {
+    position: relative;
+    width: 100%;
+    background: url('images/solutionsbanner.webp') no-repeat center bottom/cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    padding: 230px 0 120px 0;
+    overflow: hidden;
+}
+
+/* Image jaisa exact dark navy/blackish transparent overlay */
+.solution-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 15, 25, 0.75); /* Dark tech overlay */
+    z-index: 1;
+}
+
+/* 1280px Container */
+.solution-hero-section .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Main Content Box with Animation */
+.solution-hero-section .main-content {
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Main Heading */
+.solution-hero-section .main-content h1 {
+    font-size: 3.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtitle & Description Styling */
+.solution-hero-section .main-content p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 680px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+/* CTA Buttons Wrapper */
+.solution-hero-cta-group,
+.hero-cta-group {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* Keyframes for Motion Animation */
+@keyframes heroFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Shared Uiverse Button Styling (Primary & Secondary) --- */
+.solution-btn-primary,
+.solution-btn-secondary,
+.services-btn-primary,
+.services-btn-secondary {
+    position: relative;
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 7px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    transition: all 0.2s ease-in;
+}
+
+/* Primary Button Colors (Blue Theme) */
+.solution-btn-primary,
+.services-btn-primary {
+    border: 1px solid rgb(61, 106, 255);
+}
+
+.solution-btn-primary:hover,
+.services-btn-primary:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    transition: all 0.2s ease-out;
+}
+
+/* Secondary Button Colors (Clean White Outline Theme) */
+.solution-btn-secondary,
+.services-btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.solution-btn-secondary:hover,
+.services-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+    box-shadow: 0 0 30px 5px rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease-out;
+}
+
+/* Shine Animation Effect (Common for both buttons) */
+.solution-btn-primary:hover::before,
+.solution-btn-secondary:hover::before,
+.services-btn-primary:hover::before,
+.services-btn-secondary:hover::before {
+    animation: sh02 0.5s 0s linear;
+}
+
+.solution-btn-primary::before,
+.solution-btn-secondary::before,
+.services-btn-primary::before,
+.services-btn-secondary::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+.solution-btn-primary:active,
+.solution-btn-secondary:active,
+.services-btn-primary:active,
+.services-btn-secondary:active {
+    box-shadow: 0 0 0 0 transparent;
+    transition: box-shadow 0.2s ease-in;
+}
+
+/* --- Responsive Styles for Mobiles & Tablets --- */
+@media (max-width: 992px) {
+    .solution-hero-section {
+        padding: 120px 0 80px 0;
+        text-align: center;
+        background-attachment: scroll; 
+    }
+
+    .solution-hero-section .container {
+        padding: 0 20px;
+    }
+
+    .solution-hero-section .main-content {
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .solution-hero-section .main-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .solution-hero-section .main-content p {
+        font-size: 1.05rem;
+    }
+
+    .solution-hero-cta-group,
+    .hero-cta-group {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .solution-hero-section {
+        padding: 150px 0 60px 0;
+    }
+
+    .solution-hero-section .main-content h1 {
+        font-size: 2rem;
+    }
+
+    .solution-hero-cta-group,
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .solution-btn-primary, 
+    .solution-btn-secondary,
+    .services-btn-primary, 
+    .services-btn-secondary {
+        width: 100%;
+    }
+}
+
+/*  */
+/* 100% Width White Theme Section */
+.info-security-section {
+    width: 100vw; /* Poori screen ki width lega */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background-color: #ffffff; /* Is section ka background white rahega */
+    padding: 80px 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Container */
+.info-security-section .container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+    box-sizing: border-box;
+}
+
+/* Top Portfolio Intro Text */
+.portfolio-intro {
+    font-size: 1.35rem;
+    color: #111827;
+    line-height: 1.5;
+    margin: 0 0 40px 0;
+    font-weight: 400;
+    max-width: 1100px;
+}
+
+/* Divider Line */
+.section-divider {
+    border: none;
+    border-top: 1px solid #d1d5db;
+    margin: 0 0 50px 0;
+}
+
+/* Security Content Box */
+.security-content {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Heading Styling (Teal/Blue Theme) */
+.security-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #007791;
+    line-height: 1.15;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* Description Paragraph */
+.security-desc {
+    font-size: 1.125rem;
+    color: #374151;
+    line-height: 1.75;
+    margin: 0;
+    max-width: 950px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .portfolio-intro {
+        font-size: 1.15rem;
+    }
+    .security-content h2 {
+        font-size: 2.3rem;
+    }
+    .security-desc {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .info-security-section {
+        padding: 50px 0;
+    }
+    .security-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* solutions section  */
+.solution-container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+    box-sizing: border-box;
+}
+
+/* --- Section Shared Header --- */
+.solution-endpoint-security-section,
+.solution-gateway-section,
+.solution-infrastructure-section,
+.solution-surveillance-section,
+.solution-cloud-section {
+    width: 100vw;
+    padding: 90px 0;
+    box-sizing: border-box;
+}
+
+.solution-endpoint-security-section,
+.solution-infrastructure-section {
+    background-color: #f8fafc; /* Premium clean light gray-white */
+}
+
+.solution-gateway-section {
+    background-color: #ffffff;
+}
+
+.solution-section-header {
+    margin-bottom: 50px;
+}
+
+.solution-section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #007791;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.5px;
+}
+
+.solution-section-header p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- Endpoint Security Grid --- */
+.solution-security-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.solution-security-card {
+    background: #ffffff;
+    padding: 35px 25px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.solution-security-card:hover {
+    transform: translateY(-6px);
+    border-color: #007791;
+    box-shadow: 0 20px 25px -5px rgba(0, 119, 145, 0.08);
+}
+
+.solution-icon-wrapper {
+    width: 54px;
+    height: 54px;
+    background: rgba(0, 119, 145, 0.08);
+    color: #007791;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.solution-security-card:hover .solution-icon-wrapper {
+    background: #007791;
+    color: #ffffff;
+}
+
+.solution-security-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+}
+
+.solution-security-card p {
+    font-size: 0.95rem;
+    color: #475569;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- Gateway & Voice List Design --- */
+.solution-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.solution-list-item {
+    display: flex;
+    align-items: center;
+    padding: 22px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.2s ease;
+}
+
+.solution-list-item:last-child {
+    border-bottom: none;
+}
+
+.solution-list-item:hover {
+    background-color: #f8fafc;
+    padding-left: 15px;
+}
+
+.solution-list-item span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #007791;
+    width: 60px;
+}
+
+.solution-list-item h3 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #1e293b;
+    margin: 0;
+}
+
+/* --- Infrastructure & Networking --- */
+.solution-banner-image {
+    width: 100%;
+    margin: 40px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.solution-banner-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    height:250px;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.solution-bullet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 30px;
+    margin-top: 30px;
+}
+
+.solution-bullet-item {
+    position: relative;
+    padding-left: 20px;
+    font-size: 1.05rem;
+    color: #334155;
+    font-weight: 500;
+}
+
+.solution-bullet-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: #007791;
+    border-radius: 50%;
+}
+
+/* --- Premium Light Theme Video Surveillance Section --- */
+.solution-surveillance-section {
+    background-color: #f8fafc; /* Clean Light Background */
+    padding: 80px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.solution-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.solution-surveillance-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 60px 50px;
+    color: #1e293b;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle accent background glow */
+.solution-surveillance-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 119, 145, 0.05) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.solution-surveillance-content {
+    position: relative;
+    z-index: 2;
+}
+
+.solution-surveillance-content h2 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.solution-surveillance-content p {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 45px;
+    max-width: 950px;
+}
+
+/* Features Grid Styling */
+.solution-surveillance-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 40px;
+}
+
+/* Individual Feature Card with Light Styling & Hover */
+.feature-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 18px;
+    font-size: 0.95rem;
+    color: #334155;
+    border-left: 3px solid #007791;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.feature-card:hover {
+    background: #ffffff;
+    border-color: #007791;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 119, 145, 0.15);
+    color: #0f172a;
+}
+
+/* Responsive Grid for Smaller Screens */
+@media (max-width: 1024px) {
+    .solution-surveillance-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .solution-surveillance-features {
+        grid-template-columns: 1fr;
+    }
+    .solution-surveillance-box {
+        padding: 30px 20px;
+    }
+    .solution-surveillance-content h2 {
+        font-size: 2rem;
+    }
+}
+
+/* --- Cloud Solutions Box --- */
+.solution-cloud-section {
+    background-color: #f8fafc;
+    padding: 80px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.solution-cloud-box {
+    position: relative;
+    border-radius: 16px;
+    padding: 60px 40px;
+    color: #ffffff;
+    box-shadow: 0 20px 40px rgba(0, 119, 145, 0.2);
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #007791 0%, #004d61 100%);
+}
+
+/* --- Tech Background Animation --- */
+.tech-grid-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Moving Grid Lines Effect */
+.grid-lines {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 25s linear infinite;
+}
+
+/* Floating Glowing Orbs */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.4;
+    z-index: 2;
+}
+
+.orb-1 {
+    width: 300px;
+    height: 300px;
+    background: #00f2fe;
+    top: -80px;
+    left: -80px;
+    animation: floatOrb1 9s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+    width: 350px;
+    height: 350px;
+    background: #38bdf8;
+    bottom: -100px;
+    right: -80px;
+    animation: floatOrb2 11s ease-in-out infinite alternate;
+}
+
+/* Keyframes */
+@keyframes gridMove {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(50px) translateX(50px);
+    }
+}
+
+@keyframes floatOrb1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(70px, 50px) scale(1.25);
+    }
+}
+
+@keyframes floatOrb2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(-80px, -60px) scale(1.15);
+    }
+}
+
+/* Content Container */
+.solution-cloud-content {
+    position: relative;
+    z-index: 3;
+}
+
+.solution-cloud-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.solution-cloud-content p {
+    font-size: 1.1rem;
+    color: #e0f2fe;
+    line-height: 1.75;
+    margin: 0;
+    max-width: 1050px;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 768px) {
+    .solution-cloud-content h2 {
+        font-size: 2rem;
+    }
+    .solution-cloud-content p {
+        font-size: 1rem;
+    }
+    .solution-cloud-box {
+        padding: 40px 20px;
+    }
+}
+
+/*  */
+.solutions2-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #020204;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  gap: 40px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.solutions2-container *, .solutions2-container *::before, .solutions2-container *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main Container Card */
+.solutions2-section {
+  width: 100%;
+  max-width: 1050px;
+  background: linear-gradient(135deg, rgba(13, 13, 20, 0.95) 0%, rgba(6, 6, 10, 0.98) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.05);
+  position: relative;
+}
+
+/* Header Wrapper */
+.solutions2-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.solutions2-title-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.solutions2-accent-bar {
+  width: 5px;
+  height: 28px;
+  background: linear-gradient(to bottom, #38bdf8, #f59e0b);
+  border-radius: 4px;
+}
+
+.solutions2-main-title {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Diamond Pattern */
+.solutions2-diamond-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 6px);
+  gap: 5px;
+}
+
+.solutions2-diamond-grid span {
+  width: 6px;
+  height: 6px;
+  background-color: #f59e0b;
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+/* Grid Layout */
+.solutions2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+/* Feature Card */
+.solutions2-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 20px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.solutions2-card:hover {
+  background: rgba(56, 189, 248, 0.05);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1);
+  transform: translateY(-3px);
+}
+
+.solutions2-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: #f59e0b;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #f59e0b;
+  flex-shrink: 0;
+}
+
+.solutions2-text {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .solutions2-section {
+    padding: 25px;
+  }
+  .solutions2-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
