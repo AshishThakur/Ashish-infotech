@@ -3221,7 +3221,9 @@ about us section css start here
 }
 
 
-/* services page html styling  */
+/* ====================================================================
+services page html styling
+========================================================================== */
 .services-hero-section {
     position: relative;
     width: 100%;
@@ -4344,7 +4346,7 @@ body {
 }
 
 /* footer fulllayout styling  */
-/* Page background ko black karne ke liye taaki neeche white grid na dikhe */
+/*  */
 html, body {
   background-color: #000000 !important;
 }
@@ -4563,7 +4565,9 @@ html, body {
   }
 }
 
-/* =========================================solutions  page section strt here============================= */
+/* ============================================================================
+solutions  page section strt here
+=================================================================================*/
 .solution-hero-section {
     position: relative;
     width: 100%;
@@ -5001,6 +5005,80 @@ html, body {
     color: #475569;
     margin: 0;
     line-height: 1.6;
+}
+
+/* --- Responsive Media Queries --- */
+
+/* Tablets & Small Laptops (Max Width: 1024px) */
+@media (max-width: 1024px) {
+    .solution-security-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .solution-endpoint-security-section,
+    .solution-gateway-section,
+    .solution-infrastructure-section,
+    .solution-surveillance-section,
+    .solution-cloud-section {
+        padding: 70px 0;
+    }
+
+    .solution-section-header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Mobile Devices & Tablets (Max Width: 768px) */
+@media (max-width: 768px) {
+    .solution-container {
+        padding: 0 20px;
+    }
+
+    .solution-endpoint-security-section,
+    .solution-gateway-section,
+    .solution-infrastructure-section,
+    .solution-surveillance-section,
+    .solution-cloud-section {
+        padding: 50px 0;
+        width: 100%;
+    }
+
+    .solution-section-header {
+        margin-bottom: 35px;
+    }
+
+    .solution-section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .solution-section-header p {
+        font-size: 1rem;
+    }
+
+    .solution-security-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .solution-security-card {
+        padding: 25px 20px;
+    }
+}
+
+/* Small Mobile Devices (Max Width: 480px) */
+@media (max-width: 480px) {
+    .solution-section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .solution-security-card h3 {
+        font-size: 1.05rem;
+    }
+
+    .solution-security-card p {
+        font-size: 0.9rem;
+    }
 }
 
 /* --- Gateway & Voice List Design --- */
@@ -5457,4 +5535,236 @@ html, body {
     grid-template-columns: 1fr;
     gap: 12px;
   }
+}
+
+/* ========================
+people page styling here
+=============================== */
+.people-hero-section {
+    position: relative;
+    width: 100%;
+    background: url('images/people.webp') no-repeat center bottom/cover;
+    /* background-attachment: fixed; */
+    display: flex;
+    align-items: center;
+    padding: 230px 0 120px 0;
+    overflow: hidden;
+    background-position: bottom bottom;
+    background-size: cover;
+}
+
+/* Image jaisa exact dark navy/blackish transparent overlay */
+.people-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 15, 25, 0.75); /* Dark tech overlay */
+    z-index: 1;
+}
+
+/* 1280px Container */
+.people-hero-section .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Main Content Box with Animation */
+.people-hero-section .main-content {
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Main Heading */
+.people-hero-section .main-content h1 {
+    font-size: 3.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtitle Description */
+.people-hero-section .main-content p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 680px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+/* CTA Buttons Wrapper */
+.hero-cta-group {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* Keyframes for Motion Animation */
+@keyframes heroFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Shared Uiverse Button Styling (Primary & Secondary) --- */
+.people-btn-primary,
+.people-btn-secondary {
+    position: relative;
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 7px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    transition: all 0.2s ease-in;
+}
+
+/* Primary Button Colors (Blue Theme) */
+.people-btn-primary {
+    border: 1px solid rgb(61, 106, 255);
+}
+
+.people-btn-primary:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    transition: all 0.2s ease-out;
+}
+
+/* Secondary Button Colors (Clean White Outline Theme) */
+.people-btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.people-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+    box-shadow: 0 0 30px 5px rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease-out;
+}
+
+/* Shine Animation Effect (Common for both buttons) */
+.people-btn-primary:hover::before,
+.people-btn-secondary:hover::before {
+    animation: sh02 0.5s 0s linear;
+}
+
+.people-btn-primary::before,
+.people-btn-secondary::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+.people-btn-primary:active,
+.people-btn-secondary:active {
+    box-shadow: 0 0 0 0 transparent;
+    transition: box-shadow 0.2s ease-in;
+}
+
+/* --- Responsive Styles for Mobiles & Tablets --- */
+@media (max-width: 992px) {
+    .people-hero-section {
+        padding: 120px 0 80px 0;
+        text-align: center;
+        background-attachment: scroll; 
+    }
+
+    .people-hero-section .container {
+        padding: 0 20px;
+    }
+
+    .people-hero-section .main-content {
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .people-hero-section .main-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .people-hero-section .main-content p {
+        font-size: 1.05rem;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .people-hero-section {
+        padding: 150px 0 60px 0;
+    }
+
+    .people-hero-section .main-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .people-btn-primary, .people-btn-secondary {
+        width: 100%;
+    }
 }
