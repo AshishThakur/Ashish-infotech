@@ -4027,66 +4027,163 @@ body {
     pointer-events: none;
 }
 
-/* Audit Banner */
+/* --- Technology Audit Services: Closed-by-Default Toggle Style --- */
+
+.sys-block.sys-audit-block {
+  padding: 50px 0;
+  font-family: 'Poppins', sans-serif;
+  color: #f1f5f9;
+}
+
+/* Banner Styling */
 .sys-audit-banner {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    border-left: 5px solid #38bdf8;
-    padding: 30px;
-    border-radius: 12px;
+  background: linear-gradient(135deg, #091326 0%, #0f172a 100%);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-left: 6px solid #38bdf8;
+  padding: 40px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
+.sys-audit-content .sys-title.light {
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ffffff, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sys-audit-content .sys-desc.light {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 900px;
+}
+
+/* Toggle List Layout */
 .sys-audit-list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
+/* Toggle Card Item */
 .sys-audit-item {
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 25px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+  background: #080e1a;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.sys-audit-item:hover {
-    transform: translateY(-3px);
-    border-color: rgba(56, 189, 248, 0.3);
+.sys-audit-item[open] {
+  border-color: #38bdf8;
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.12);
+}
+
+/* Clickable Header */
+.sys-audit-item summary {
+  padding: 22px 25px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #080e1a;
+  transition: background 0.2s ease;
+}
+
+.sys-audit-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.sys-audit-item summary:hover {
+  background: rgba(56, 189, 248, 0.04);
+}
+
+/* Plus/Cross Icon Animation */
+.sys-audit-item summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  color: #38bdf8;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+.sys-audit-item[open] summary::after {
+  transform: rotate(45deg);
 }
 
 .sys-audit-item h3 {
-    color: #38bdf8;
-    font-size: 1.35rem;
-    margin: 0 0 8px 0;
+  color: #f8fafc;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
 }
 
+/* Expanded Content Body */
+.sys-audit-body {
+  padding: 0 25px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.4s ease;
+}
+
+.sys-audit-body p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0;
+  padding-top: 15px;
+}
+
+/* Bullet List inside Toggle */
 .sys-bullet-list {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sys-bullet-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #cbd5e1;
-    font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  background: #030712;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
 }
 
+.sys-bullet-list li span {
+  font-size: 0.85rem;
+}
+
+/* Note Box */
 .sys-note {
-    font-size: 0.95rem;
-    color: #64748b;
-    border-left: 2px solid #38bdf8;
-    padding-left: 12px;
-    margin-top: 10px;
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  background: rgba(56, 189, 248, 0.06);
+  border-left: 3px solid #38bdf8;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 6px;
+  line-height: 1.7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Managed Services List Rows */
